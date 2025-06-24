@@ -1,13 +1,25 @@
-import "./App.css";
+import { Routes, Route,Navigate } from "react-router-dom";
+import Login from "./pages/Login"
+import ProtectedLayout from "./components/ProtectedLayout";
+import Dashboard from "./pages/Dashboard" ;
+import CreateOrder from "./pages/CreateOrder";
+import TrackOrder from "./pages/TrackOrder";
+import Sales from "./pages/Sales";
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline p-20  bg-red-500">
-        Magneq Transmission
-      </h1>
-    </>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<ProtectedLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/create-order" element={<CreateOrder />} />
+          <Route path="/track-order" element={<TrackOrder />} />
+          <Route path="/sales" element={<Sales />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
-
 export default App;
