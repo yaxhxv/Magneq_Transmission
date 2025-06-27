@@ -1,5 +1,7 @@
 import { Routes, Route,Navigate } from "react-router-dom";
+import AppLayout from "./layouts/AppLayout"
 import Login from "./pages/Login"
+import Button from "./components/buttons/Button";
 import ProtectedLayout from "./components/ProtectedLayout";
 import Dashboard from "./pages/Dashboard" ;
 import CreateOrder from "./pages/CreateOrder";
@@ -10,13 +12,12 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
-        <Route element={<ProtectedLayout />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/create-order" element={<CreateOrder />} />
-          <Route path="/track-order" element={<TrackOrder />} />
-          <Route path="/sales" element={<Sales />} />
+        <Route element={<AppLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create-order" element={<CreateOrder />} />
+            <Route path="/track-order" element={<TrackOrder />} />
+            <Route path="/sales" element={<Sales />} />
         </Route>
       </Routes>
     </div>

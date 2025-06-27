@@ -1,11 +1,12 @@
 import axiosInstance from '../api/axiosInstance';
-//import use navigate
+import {useNavigate} from 'react-router-dom';
 
 /**
  * Custom hook to get the configured Axios instance.
  * @returns {import('axios').AxiosInstance} The configured Axios instance.
  */
 const useAxios = () => {
+  const navigate = useNavigate();
 const axiosInstance = axios.create({
   baseURL: "http://localhost:8000/api/v1",  
 });
@@ -31,7 +32,7 @@ axiosInstance.interceptors.response.use(
     if (error.response && error.response.status === 403) {
       localStorage.removeItem("token"); //TODO: update the token with exact token name
       // We are refreshing the page and redirecting to login.
-      window.location.href = '/login';
+      navigate('/login');
     }
     return Promise.reject(error);
   }
