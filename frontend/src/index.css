@@ -1,12 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap")
 layer(base);
-
 @import "tailwindcss";
+
+:root {
+
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  --background: 255,255,255,1;
+  --border: 228, 231, 236, 1;
+  --text: 16, 24, 40, 1;
+  --hover: 242, 244, 247, 1
+}
+
+.light {
+  --background: 255,255,255,1;
+  --border: 228, 231, 236, 1;
+  --text: 16, 24, 40, 1;
+  --hover: 242, 244, 247, 1
+}
+
+.dark {
+  --background: 16, 24, 40, 1;
+  --border:29, 41, 57, 1;
+  --text: 242, 244, 247, 1;
+  --hover: 29, 41, 57, 1;
+}
+
+@theme {
+  --color-background: rgba(var(--background));
+  --color-border:rgba(var(--border));
+  --color-text: rgba(var(--text));
+  --color-hover: rgba(var(--hover));
+}
 @custom-variant dark (&:is(.dark *));
 @theme {
   --font-*: initial;
   --font-outfit:  sans-serif;
-
+  --background:255, 0, 0, 255;
   --breakpoint-*: initial;
   --breakpoint-2xsm: 375px;
   --breakpoint-xsm: 425px;
@@ -38,7 +74,7 @@ layer(base);
   --color-transparent: transparent;
   --color-white: #ffffff;
   --color-black: #101828;
-
+  --color-background: var(255, 0, 0, 255);
   --color-brand-25: #f2f7ff;
   --color-brand-50: #ecf3ff;
   --color-brand-100: #dde9ff;
@@ -53,12 +89,12 @@ layer(base);
   --color-brand-950: #161950;
 
   --color-blue-light-25: #f5fbff;
-  --color-blue-light-50: #f0f9ff;
+  --color-blue-light-50: #f0f9ff; /* FG blue background */
   --color-blue-light-100: #e0f2fe;
   --color-blue-light-200: #b9e6fe;
   --color-blue-light-300: #7cd4fd;
   --color-blue-light-400: #36bffa;
-  --color-blue-light-500: #0ba5ec;
+  --color-blue-light-500: #0ba5ec; /* FG blue text colour */
   --color-blue-light-600: #0086c9;
   --color-blue-light-700: #026aa2;
   --color-blue-light-800: #065986;

@@ -1,34 +1,33 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router';
-import {
-  BoxCubeIcon,
-  SalesBox,
-  ListIcon,
-  FileIcon,
-  GridIcon,
-  MailIcon,
-  ChatIcon,
-  HorizontaLDots,
-  Logo,
-  PageIcon,
-} from '../icons';
+import { Logo} from '../icons';
+import { BsGrid } from "react-icons/bs";
+import { HiOutlineArchiveBox } from "react-icons/hi2";//sales box
+import { PiCubeDuotone } from "react-icons/pi"; //production
+import { CgMenuBoxed } from "react-icons/cg"; //store
+import { TbFileInvoice } from "react-icons/tb"; //purchase
+import { IoChatbubblesOutline } from "react-icons/io5"; //chat
+import { GoMail,GoKebabHorizontal } from "react-icons/go"; //support and horizontal-dots
 import { useSidebar } from '../hooks/useSidebar';
+import {useSelector} from "react-redux"
 
 const navItems = [
-  { icon: GridIcon, name: 'Dashboard', path: '/dashboard' },
-  { icon: SalesBox, name: 'Sales', path: '/sales' },
-  { icon: BoxCubeIcon, name: 'Production', path: '/production' },
-  { icon: ListIcon, name: 'Stores', path: '/stores' },
-  { icon: FileIcon, name: 'Purchase', path: '/purchase' },
+  { icon: BsGrid, name: 'Dashboard', path: '/dashboard' },
+  { icon: HiOutlineArchiveBox, name: 'Sales', path: '/sales' },
+  { icon: PiCubeDuotone, name: 'Production', path: '/production' },
+  { icon: CgMenuBoxed, name: 'Stores', path: '/stores' },
+  { icon: TbFileInvoice, name: 'Purchase', path: '/purchase' },
 ];
 
 const supportItems = [
-  { icon: ChatIcon, name: 'Chat', path: '/support/chat' },
-  { icon: MailIcon, name: 'Email', path: '/support/email' },
+  { icon: IoChatbubblesOutline, name: 'Chat', path: '/support/chat' },
+  { icon: GoMail, name: 'Email', path: '/support/email' },
 ];
 
 const AppSidebar = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
+  // const user = useSelector((state) => state.auth.user);
+  const role =  "ADMIN";
   const location = useLocation();
   const [openSubmenu, setOpenSubmenu] = useState(null);
 
@@ -64,15 +63,15 @@ const AppSidebar = () => {
               to={nav.path}
               className={`flex items-center gap-3 px-4 py-2 rounded-md font-medium transition ${
                 active
-                  ? 'bg-[#eef2ff] text-[#4f46e5] dark:bg-gray-800 dark:text-white'
-                  : 'text-gray-800 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+                  ? 'bg-[#eef2ff] text-[#4f46e5] dark:bg-[#465FFF1F] '
+                  : 'text-text hover:hover'
               } ${!isExpanded && !isHovered ? 'justify-center' : ''}`}
             >
               <Icon
                 className={`w-5 h-5 ${
                   active
-                    ? 'text-[#4f46e5] dark:text-white'
-                    : 'text-gray-500 dark:text-gray-400'
+                    ? 'text-text'
+                    : 'text-text'
                 }`}
               />
               {(isExpanded || isHovered || isMobileOpen) && (
@@ -87,7 +86,7 @@ const AppSidebar = () => {
 
   return (
     <aside
-      className={`fixed top-0 left-0 h-screen bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 z-40 transition-all duration-300 px-5 pt-8 ${
+      className={`fixed top-0 left-0 h-screen bg-background border-r border-border z-40 transition-all duration-300 px-5 pt-8 ${
         isExpanded || isMobileOpen
           ? 'w-[290px]'
           : isHovered
@@ -105,22 +104,28 @@ const AppSidebar = () => {
       >
         <Link to="/" className='flex gap-3'>
           {(isExpanded || isHovered || isMobileOpen) ? (
+            <>
             <Logo/>
+            <div className="font-bold text-3xl text-text font-['Plus_Jakarta_Sans']">Magneq</div>
+            </>
           ) : (
             <Logo />
-          )}<div className='py-1 font-bold font'>Magneq</div>
+          )}
         </Link>
       </div>
 
       {/* Menu */}
-      <nav className="mb-8">
+      {}
+      <nav className="mb-8 ">
         <h2
-          className={`mb-3 my-2 text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 ${
+          className={`mb-3  text-xs font-semibold uppercase tracking-widest text-text ${
             !isExpanded && !isHovered ? 'text-center' : ''
           }`}
         >
           {(isExpanded || isHovered || isMobileOpen) ? 'Menu' : (
-            <HorizontaLDots />
+            <div className='ml-4.5'>
+              <GoKebabHorizontal />
+            </div>
           )}
         </h2>
         {renderMenuItems(navItems)}
@@ -129,12 +134,14 @@ const AppSidebar = () => {
       {/* Support */}
       <nav className="mb-10">
         <h2
-          className={`mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 ${
+          className={`mb-3 text-xs font-semibold uppercase tracking-widest text-text${
             !isExpanded && !isHovered ? 'text-center' : ''
           }`}
         >
           {(isExpanded || isHovered || isMobileOpen) ? 'Support' : (
-            <HorizontaLDots />
+            <div className='ml-4.5'>
+              <GoKebabHorizontal />
+            </div>
           )}
         </h2>
         {renderMenuItems(supportItems)}

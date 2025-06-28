@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSalesOrders } from '../../features/salesSlice';
+import { fetchSalesOrders } from '../../../features/salesSlice';
 import {
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableRow,
-} from '../common/Table';
-import Badge from '../common/Badge';
+} from '../../common/Table';
+import Badge from '../../common/Badge';
 
 const SalesTable = () => {
   const dispatch = useDispatch();
@@ -21,14 +21,14 @@ const SalesTable = () => {
   const getStatusColor = (statusText) => {
     if (!statusText) return 'light';
     const lower = statusText.toLowerCase();
-    if (lower.includes('approved') || lower.includes('active')) return 'success';
-    if (lower.includes('pending')) return 'warning';
-    if (lower.includes('cancel') || lower.includes('rejected')) return 'error';
+    if (lower.includes('dispatched') || lower.includes('approved')) return 'success';
+    if (lower.includes('in process')|| lower.includes('pending') ) return 'warning';
+    if (lower.includes('fg')|| lower.includes('cancelled')) return 'info';
     return 'primary';
   };
 
   return (
-    <div className="rounded-xl border border-gray-200 dark:border-white/[0.05] bg-background transition-colors">
+    <div className="rounded-xl border border-gray-200 dark:border-white/[0.05] transition-colors">
       <div className="max-w-full max-h-[500px] overflow-x-auto overflow-y-auto">
         <Table>
           <TableHeader className="sticky top-0 z-10 bg-background border-b border-gray-100 dark:border-white/[0.05]">

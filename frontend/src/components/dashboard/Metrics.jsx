@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {
-  SalesBox,
-  BoxIcon,
-  BoltIcon,
-  BriefCase,
-} from '../../icons';
+
+import { HiOutlineArchiveBox } from "react-icons/hi2";//sales box
+import { PiCubeDuotone } from "react-icons/pi"; //production
+import { BsBriefcase } from "react-icons/bs";
+import { MdBolt } from "react-icons/md";
 import Card from '../card/Card';
 
 const Metrics = () => {
@@ -40,31 +39,31 @@ const Metrics = () => {
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
       <Card
         title="Sales"
-        icon={SalesBox}
+        icon={HiOutlineArchiveBox}
         value={Sales?.amount}
         percent={Sales?.percent}
-        className="min-h-[160px] p-6 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-md rounded-xl"
+        className="min-h-[160px] p-6 bg-background text-text shadow-md rounded-xl"
       />
       <Card
         title="Purchase"
-        icon={BoxIcon}
+        icon={PiCubeDuotone}
         value={purchase?.amount}
         percent={purchase?.percent}
-        className="min-h-[160px] p-6 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-md rounded-xl"
+        className="min-h-[160px] p-6 bg-background text-text shadow-md rounded-xl"
       />
       <Card
         title="PO"
-        icon={BriefCase}
+        icon={BsBriefcase}
         value={po?.quantity}
         percent={po?.percent}
-        className="min-h-[160px] p-6 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-md rounded-xl"
+        className="min-h-[160px] p-6 bg-background text-text shadow-md rounded-xl"
       />
       <Card
         title="Finished Goods"
-        icon={BoltIcon}
+        icon={MdBolt}
         value={fg?.quantity}
         percent={fg?.percent}
-        className="min-h-[160px] p-6 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-md rounded-xl"
+        className="min-h-[160px] p-6 bg-background text-text shadow-md rounded-xl"
       />
     </div>
   );

@@ -20,7 +20,10 @@ const LayoutContent = () => {
         } ${isMobileOpen ? "ml-0" : ""}`}
       >
         <AppHeader />
+        <div className="p-8">
+
           <Outlet />
+        </div>
       </div>
     </div>
   );

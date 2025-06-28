@@ -1,11 +1,11 @@
 import React from 'react';
 import Metrics from '../components/dashboard/Metrics';
-import StatisticsChart from '../components/dashboard/StatisticsChart';
 import SalesTable from '../components/dashboard/SalesTable';
+import StatisticsChart from '../components/dashboard/StatisticsChart';
 
 const Home = () => {
   return (
-      <div className="grid grid-cols-12 gap-4 md:gap-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-4 md:p-6 rounded-lg shadow-sm">
+      <div className="grid grid-cols-12 gap-4 md:gap-6 bg-background text-text">
         <div className="col-span-12 space-y-6 ">
           <Metrics />
         </div>
